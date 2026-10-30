@@ -1,0 +1,428 @@
+// Настройки VS Code.
+// Симлинк на этот файл ставит steps/03-editors.sh.
+//
+// Взято из https://github.com/sobolevn/dotfiles/tree/master/vscode
+// (коммит a0d77db, 2026-10-23), комментарии добавлены.
+//
+// Подход автора: убрать из интерфейса всё лишнее и выключить автоматику,
+// которая правит код за тебя. Если что-то кажется перебором — меняй значение,
+// рядом с каждой строкой написано, за что она отвечает.
+{
+  // ─────────────────────────── Редактор: внешний вид ───────────────────────────
+
+  // Курсор не мигает.
+  "editor.cursorBlinking": "solid",
+  // Не включать режим для скринридеров (он ломает часть анимаций).
+  "editor.accessibilitySupport": "off",
+  // Показывать над функциями ссылки «N references».
+  "editor.codeLens": true,
+  // Не рисовать квадратики-образцы рядом с цветами в коде.
+  "editor.colorDecorators": false,
+  // Запретить перетаскивание выделенного текста мышью (легко задеть случайно).
+  "editor.dragAndDrop": false,
+  // Сворачивание блоков кода выключено. Включи true и жми cmd+alt и [ или ].
+  "editor.folding": false,
+  // Стрелки сворачивания появляются только при наведении.
+  "editor.showFoldingControls": "mouseover",
+  // Шрифт редактора. Ставится из Brewfile: cask "font-fira-code".
+  "editor.fontFamily": "Fira Code",
+  // Лигатуры: -> и != рисуются одним знаком.
+  "editor.fontLigatures": true,
+  // Размер шрифта.
+  "editor.fontSize": 17,
+  // Сколько строк показывать в секции «Открытые редакторы».
+  "explorer.openEditors.visible": 1,
+  // Миникарта справа выключена.
+  "editor.minimap.enabled": false,
+  // Показывать пробелы и табы только внутри выделения.
+  "editor.renderWhitespace": "selection",
+  // Не подсвечивать строку, на которой стоит курсор.
+  "editor.renderLineHighlight": "none",
+  // Курсор виден на полосе обзора справа.
+  "editor.hideCursorInOverviewRuler": false,
+  // Не схлопывать цепочки папок в одну строку (src/main/java вместо src · main · java).
+  "explorer.compactFolders": false,
+  // Не подсвечивать другие вхождения слова под курсором.
+  "editor.occurrencesHighlight": "off",
+  // Без рамки вокруг полосы обзора.
+  "editor.overviewRulerBorder": false,
+  // Не красить парные скобки в разные цвета.
+  "editor.bracketPairColorization.enabled": false,
+  // Вертикальная линейка на 80-м символе.
+  "editor.rulers": [80],
+  // Нельзя прокрутить ниже последней строки файла.
+  "editor.scrollBeyondLastLine": false,
+  // Не подмешивать сниппеты в список автодополнения.
+  "editor.snippetSuggestions": "none",
+  // Держать минимум 3 строки видимыми выше и ниже курсора.
+  "editor.cursorSurroundingLines": 3,
+  // Tab двигает курсор по позициям табуляции.
+  "editor.useTabStops": true,
+  // Переносить длинные строки.
+  "editor.wordWrap": "on",
+  // Переносить по 80-му символу.
+  "editor.wordWrapColumn": 80,
+  // Всплывающие подсказки при наведении выключены.
+  "editor.hover.enabled": "off",
+  // Не «прилипать» заголовку функции к верху при прокрутке.
+  "editor.stickyScroll.enabled": false,
+  // Не спрашивать подтверждение при удалении файла.
+  "explorer.confirmDelete": false,
+  // Не спрашивать подтверждение при перетаскивании файла.
+  "explorer.confirmDragAndDrop": false,
+  // Без значков-бейджей (ошибки, git) на файлах в дереве.
+  "explorer.decorations.badges": false,
+  // Не предлагать «рекомендованные» расширения.
+  "extensions.ignoreRecommendations": true,
+  // Сравнение версий — одной колонкой, а не двумя рядом.
+  "diffEditor.renderSideBySide": false,
+  // Строка «хлебных крошек» над редактором выключена.
+  "breadcrumbs.enabled": false,
+  // Поисковая строка по центру заголовка окна выключена.
+  "window.commandCenter": false,
+  // Левая полоса с иконками (Explorer, Search, Git) скрыта.
+  "workbench.activityBar.location": "hidden",
+  // Крестик на вкладке не показывается.
+  "workbench.editor.tabActionCloseVisibility": false,
+  // Диалоги открываются как обычные окна, а не модальные.
+  "workbench.editor.useModal": "off",
+  // Задержка подсказки 10 секунд — способ её практически отключить.
+  "workbench.hover.delay": 10000,
+  // Вертикальная полоса прокрутки появляется по необходимости.
+  "editor.scrollbar.vertical": "auto",
+  // Горизонтальной полосы прокрутки нет (строки и так переносятся).
+  "editor.scrollbar.horizontal": "hidden",
+  // Не включать экспериментальный новый интерфейс.
+  "workbench.experimental.modernUI": false,
+
+  // ──────────────────────── Переходы по коду ────────────────────────
+  //
+  // goto — сразу прыгать к первому результату, не открывая список вариантов.
+
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+
+  // ──────────────── Никакой самодеятельности: редактор не правит код ────────────────
+
+  // Не дописывать закрывающую скобку.
+  "editor.autoClosingBrackets": "never",
+  // Не дописывать закрывающую кавычку.
+  "editor.autoClosingQuotes": "never",
+  // Не оборачивать выделенное в скобки/кавычки при их наборе.
+  "editor.autoSurround": "never",
+  // Не «проскакивать» уже существующую закрывающую скобку при её наборе.
+  "editor.autoClosingOvertype": "never",
+  // Не всплывать с подсказками на . и прочих символах.
+  "editor.suggestOnTriggerCharacters": false,
+  // Не применять подсказку при вводе разделителя.
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  // Применять выбранную подсказку по Enter.
+  "editor.acceptSuggestionOnEnter": "on",
+  // Не показывать подсказку с сигнатурой функции.
+  "editor.parameterHints.enabled": false,
+  // Tab дополняет слово.
+  "editor.tabCompletion": "on",
+  // В списке подсказок предвыбрано последнее использованное.
+  "editor.suggestSelection": "recentlyUsed",
+  // Автодополнение не выскакивает само. Поменяй "other" на true, чтобы вернуть.
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false,
+  },
+  // Не форматировать по ходу набора.
+  "editor.formatOnType": false,
+  // Не форматировать вставленный текст.
+  "editor.formatOnPaste": false,
+  // Форматировщик по умолчанию не задан — форматирование только руками.
+  "editor.defaultFormatter": null,
+  // Сохранять отступ предыдущей строки, не пересчитывать его.
+  "editor.autoIndent": "keep",
+  // Серые ИИ-подсказки прямо в коде выключены.
+  "editor.inlineSuggest.enabled": false,
+  // Поднимать в списке подсказок то, что ближе к курсору.
+  "editor.suggest.localityBonus": true,
+  // Лампочка быстрых действий не показывается.
+  "editor.lightbulb.enabled": "off",
+  // Не угадывать размер отступа по содержимому файла.
+  "editor.detectIndentation": false,
+  // Не рисовать вертикальные линии отступов.
+  "editor.guides.indentation": false,
+  // Не приглушать неиспользуемые переменные.
+  "editor.showUnused": false,
+  // Не предлагать выбор формата при вставке.
+  "editor.pasteAs.showPasteSelector": "never",
+  // При вставке Python-кода — переформатировать отступы силами Pylance.
+  "editor.pasteAs.preferences": ["text.pylance.reindent"],
+  // Режим ИИ-агента в чате выключен.
+  "chat.agent.enabled": false,
+
+  // ─────────────────────────────── Поиск ───────────────────────────────
+
+  // Запоминать введённый запрос между открытиями панели поиска.
+  "search.quickAccess.preserveInput": true,
+  // В быстрый переход (cmd+P) не подмешивать символы — только файлы.
+  "search.quickOpen.includeSymbols": false,
+  // История запросов сортируется по свежести.
+  "search.quickOpen.history.filterSortOrder": "recency",
+  // Поле быстрого перехода очищается при открытии.
+  "workbench.quickOpen.preserveInput": false,
+
+  // ──────────────────────── Настройки под конкретные языки ────────────────────────
+
+  "[rust]": {
+    // В Rust лигатуры особенно полезны: => и ->.
+    "editor.fontLigatures": true,
+  },
+  "[css]": {
+    // В CSS образцы цвета рядом со значением — удобно.
+    "editor.colorDecorators": true,
+  },
+  "[jsonc]": {
+    // В JSONC тоже: пригождается при правке тем редактора.
+    "editor.colorDecorators": true,
+  },
+
+  // ─────────────────────────────── Файлы ───────────────────────────────
+
+  // Чем считать файлы, которые VS Code не распознаёт сам.
+  "files.associations": {
+    ".babelrc": "jsonc",
+    ".eslintrc": "jsonc",
+    "*.pyi": "python",
+    "*.bats": "shellscript",
+  },
+  // Сохранять файл при переключении на другую вкладку или окно.
+  "files.autoSave": "onFocusChange",
+  // Что прятать из дерева файлов.
+  "files.exclude": {
+    "**/.DS_Store": true,
+
+    "**/node_modules": true,
+    "**/bower_components": true,
+
+    "**/__pycache__": true,
+    "**/.cache": true,
+    "**/.claude": true,
+    "**/.idea": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.venv": true,
+    "**/.coverage": true,
+    "**/*.py[co]": true,
+    "**/htmlcoverage": true,
+    "**/docs/build": true,
+  },
+  // .ipynb открывать встроенным редактором блокнотов.
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+  },
+
+  // ─────────────────────────────── Телеметрия ───────────────────────────────
+
+  // Не отправлять Microsoft статистику использования.
+  "telemetry.telemetryLevel": "off",
+
+  // ─────────────────────────────── Терминал ───────────────────────────────
+
+  // Терминал открывается как вкладка редактора, а не панелью снизу.
+  "terminal.integrated.defaultLocation": "editor",
+  // Не внедрять в шелл хуки VS Code (они конфликтуют с кастомным zshrc).
+  "terminal.integrated.shellIntegration.enabled": false,
+  // Без значков успеха/ошибки слева от команд.
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  // Не прилеплять текущую команду к верху терминала.
+  "terminal.integrated.stickyScroll.enabled": false,
+  // Без автодополнения от VS Code в терминале — его делает zsh.
+  "terminal.integrated.suggest.enabled": false,
+  // Не предупреждать при вставке многострочного текста.
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  // Оболочка по умолчанию на macOS.
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  // И на Linux (для разработки в контейнере или по SSH).
+  "terminal.integrated.defaultProfile.linux": "bash",
+  // Переменная окружения для тем автора настроек.
+  "terminal.integrated.env.osx": {
+    "SOBOLE_THEME_MODE": "dark",
+  },
+  // Звонок терминала: ни звука, ни голосового объявления.
+  "accessibility.signals.terminalBell": {
+    "sound": "off",
+    "announcement": "off",
+  },
+  // Вместо звука — короткая вспышка.
+  "terminal.integrated.enableVisualBell": true,
+  // В терминале лигатуры не нужны: они путают при чтении вывода.
+  "terminal.integrated.fontLigatures.enabled": false,
+
+  // ─────────────────────────── Окно и рабочая область ───────────────────────────
+
+  // Первый клик по неактивному окну только активирует его, не нажимая кнопку.
+  "window.clickThroughInactive": false,
+  // Новое окно открывается развёрнутым.
+  "window.newWindowDimensions": "maximized",
+  // На вкладке — имя файла и кусок пути.
+  "workbench.editor.labelFormat": "medium",
+  // При запуске открывается пустой безымянный файл.
+  "workbench.startupEditor": "newUntitledFile",
+  // Нижняя строка состояния скрыта.
+  "workbench.statusBar.visible": false,
+  // Не показывать советы «а вы знали, что…».
+  "workbench.tips.enabled": false,
+  // Без направляющих линий в дереве файлов.
+  "workbench.tree.renderIndentGuides": "none",
+  // Родительская папка не прилипает к верху дерева при прокрутке.
+  "workbench.tree.enableStickyScroll": false,
+  // Не подсвечивать вкладки с несохранёнными изменениями.
+  "workbench.editor.highlightModifiedTabs": false,
+  // Без иконок типов файлов на вкладках.
+  "workbench.editor.showIcons": false,
+  // Показывать только одну вкладку — текущую.
+  "workbench.editor.showTabs": "single",
+  // Без бейджей на вкладках.
+  "workbench.editor.decorations.badges": false,
+  // Без цветовых меток git на вкладках.
+  "workbench.editor.decorations.colors": false,
+  // Не открывать файлы в режиме предпросмотра (курсивом, с заменой вкладки).
+  "workbench.editor.enablePreview": false,
+  // Боковая панель справа, а не слева.
+  "workbench.sideBar.location": "right",
+  // Не показывать подсказку на пустом редакторе.
+  "workbench.editor.empty.hint": "hidden",
+  // Кнопки управления раскладкой в заголовке скрыты.
+  "workbench.layoutControl.enabled": false,
+
+  // Не перепрыгивать автоматически к следующему конфликту слияния.
+  "merge-conflict.autoNavigateNextConflict.enabled": false,
+
+  // ─────────────────────────────── Отладка ───────────────────────────────
+
+  // Разрешить ставить точки останова в любом файле.
+  "debug.allowBreakpointsEverywhere": true,
+  // Не показывать кнопки запуска над npm-скриптами.
+  "debug.javascript.codelens.npmScripts": "never",
+  // Поле слева от номеров строк скрыто — вместе с ним и точки останова.
+  "editor.glyphMargin": false,
+  // Закрывать консоль отладки по завершении сессии.
+  "debug.console.closeOnEnd": true,
+
+  // ──────────────────────── Инструменты и языки ────────────────────────
+
+  // Не подсвечивать проблемы в дереве файлов.
+  "problems.decorations.enabled": false,
+
+  // Не делать git fetch в фоне.
+  "git.autofetch": false,
+  // Без кнопки «открыть файл» в панели изменений.
+  "git.showInlineOpenFileAction": false,
+  // Обновлять состояние git при изменениях на диске.
+  "git.autorefresh": true,
+  // Цветовые метки git в дереве файлов включены.
+  "git.decorations.enabled": true,
+  // Не искать git-репозиторий в родительских папках.
+  "git.openRepositoryInParentFolders": "never",
+  // Не показывать автора строки прямо в коде.
+  "git.blame.editorDecoration.enabled": false,
+  // И в строке состояния тоже.
+  "git.blame.statusBarItem.enabled": false,
+
+  // Не дописывать () при автодополнении функции.
+  "python.analysis.completeFunctionParens": false,
+  // Не предлагать создать виртуальное окружение.
+  "python.createEnvironment.trigger": "off",
+  // Не активировать venv в уже открытом терминале.
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  // И в новых терминалах тоже — этим занимается direnv.
+  "python.terminal.activateEnvironment": false,
+  // Без хуков Python в оболочке.
+  "python.terminal.shellIntegration.enabled": false,
+  // Языковой сервер — Pylance.
+  "python.languageServer": "Pylance",
+  // Не слать дополнительную телеметрию.
+  "python.analysis.reportExtraTelemetry": false,
+  // Без ИИ-пересказов в подсказках.
+  "python.analysis.addHoverSummaries": false,
+  // Не анализировать ни один .py — проверку типов делает mypy в CI.
+  "python.analysis.ignore": ["**/*.py"],
+  // Проверка типов в редакторе выключена.
+  "python.analysis.typeCheckingMode": "off",
+  // Не дописывать import автоматически.
+  "python.analysis.autoImportCompletions": false,
+  // Не угадывать пути поиска модулей.
+  "python.analysis.autoSearchPaths": false,
+  // Не участвовать в A/B-экспериментах расширения.
+  "python.experiments.enabled": false,
+  // Не искать тесты при каждом сохранении.
+  "python.testing.autoTestDiscoverOnSaveEnabled": false,
+
+  // Не приглушать код под #ifdef, который не компилируется.
+  "C_Cpp.dimInactiveRegions": false,
+
+  // Расширение Error Lens: подпорка, чтобы не ломалась полоса прокрутки.
+  "errorLens.scrollbarHackEnabled": true,
+  // Само расширение выключено, включается горячей клавишей (см. keybindings.json).
+  "errorLens.enabled": false,
+
+  // ─────────────────────────────── Тема ───────────────────────────────
+
+  // Цветовая тема — расширение sobolevn.pustota.
+  "workbench.colorTheme": "pustota",
+  // Иконки — расширение teabyii.ayu.
+  "workbench.iconTheme": "ayu",
+
+  // Не красить код по данным языкового сервера, только по синтаксису.
+  "editor.semanticHighlighting.enabled": false,
+  // Ошибки и предупреждения делаем полностью прозрачными (последние две цифры 00).
+  "workbench.colorCustomizations": {
+    "editorError.foreground": "#00000000",
+    "editorWarning.foreground": "#00000000",
+  },
+  // Не подсвечивать не-ASCII символы (иначе весь русский текст в рамочках).
+  "editor.unicodeHighlight.nonBasicASCII": false,
+
+  // ──────────── Расширение subframe7536.custom-ui-style ────────────
+  //
+  // Оно правит интерфейс самого Electron — то, что обычными настройками не достать.
+
+  "custom-ui-style.electron": {
+    // Убрать рамку окна.
+    "frame": false,
+    // Убрать белую полоску сверху.
+    "transparent": true,
+    // Спрятать заголовок окна.
+    "titleBarStyle": "hidden",
+    "titleBarOverlay": {
+      // Высота полосы заголовка, чтобы текст и кнопки встали по центру.
+      "height": 35,
+    }
+  },
+  // Системный заголовок окна.
+  "window.titleBarStyle": "native",
+  // Собственный заголовок VS Code не показывать.
+  "window.customTitleBarVisibility": "never",
+
+  // Дополнительный CSS: прячет то, что настройками не убирается.
+  "custom-ui-style.stylesheet": {
+    // Убрать панель инструментов и полосу прокрутки в списках быстрого выбора.
+    ".monaco-toolbar, .quick-input-list .scrollbar, .quick-input-list .action-label": {
+      "visibility": "hidden !important",
+      "display": "none !important",
+    },
+    // Отцентровать имя файла в заголовке группы редакторов.
+    ".monaco-workbench .editor-group-container>.title>.label-container>.title-label>.monaco-icon-label-container": {
+      "margin-left": "50px !important",
+    },
+    // Сдвинуть заголовок терминала, чтобы не налезал на кнопки окна.
+    ".composite.title.has-composite-bar": {
+      "margin-left": "50px !important",
+    },
+    // Убрать плавающую кнопку «Merge in merge editor».
+    ".floating-click-widget": {
+      "visibility": "hidden !important",
+      "display": "none !important",
+    },
+  },
+}

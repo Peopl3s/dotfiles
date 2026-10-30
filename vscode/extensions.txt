@@ -1,0 +1,25 @@
+# Расширения VS Code. По одному ID в строке, строки с # игнорируются.
+#
+# Установить всё:  bash ~/Desktop/dotfiles/vscode/install-extensions.sh
+# Обновить список: code --list-extensions > ~/Desktop/dotfiles/vscode/extensions.txt
+#
+# Этот набор взят из https://github.com/sobolevn/dotfiles вместе с настройками:
+# без него settings.json будет ссылаться на несуществующие тему и расширения.
+
+# Цветовая тема pustota — на неё ссылается workbench.colorTheme
+sobolevn.pustota
+# Тема иконок ayu — на неё ссылается workbench.iconTheme
+teabyii.ayu
+# Правит интерфейс Electron: убирает рамку окна и лишние элементы
+# (блок custom-ui-style.* в settings.json)
+subframe7536.custom-ui-style
+# Показывает ошибки прямо в строке кода; выключено, включается горячей клавишей
+usernamehw.errorlens
+# Поддержка Python
+ms-python.python
+# Языковой сервер Pylance — на него ссылается python.languageServer
+ms-python.vscode-pylance
+# Поддержка C и C++
+ms-vscode.cpptools
+# Соблюдение правил .editorconfig
+editorconfig.editorconfig

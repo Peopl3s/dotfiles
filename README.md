@@ -18,6 +18,7 @@
 | zsh, git, htop | [`config/`](config) |
 | Алиасы, функции, переменные окружения | [`shell/`](shell) |
 | Настройки и расширения Cursor | [`cursor/`](cursor) |
+| Настройки и расширения VS Code | [`vscode/`](vscode) |
 
 ## Установка на чистый Mac
 
@@ -59,7 +60,7 @@ bash ~/Desktop/dotfiles/macos/settings.sh
 | --- | --- |
 | [`steps/01-terminal.sh`](steps/01-terminal.sh) | Ссылки на zsh, git, htop и папку `shell/` |
 | [`steps/02-dependencies.sh`](steps/02-dependencies.sh) | `brew bundle` по Brewfile и установка nvm |
-| [`steps/03-editors.sh`](steps/03-editors.sh) | Настройки Cursor и его расширения |
+| [`steps/03-editors.sh`](steps/03-editors.sh) | Настройки и расширения Cursor и VS Code |
 
 Общие функции (`link`, уборка битых ссылок) лежат в
 [`steps/_helpers.sh`](steps/_helpers.sh). Любой шаг запускается и отдельно:
@@ -115,11 +116,31 @@ brew bundle dump --force --file=~/Desktop/dotfiles/macos/Brewfile
 > `dump` перезапишет файл и сотрёт все комментарии — сравни через `git diff`
 > и верни пояснения на место.
 
-Поставил расширение в Cursor:
+Поставил расширение в редактор:
 
 ```bash
 cursor --list-extensions > ~/Desktop/dotfiles/cursor/extensions.txt
+code --list-extensions > ~/Desktop/dotfiles/vscode/extensions.txt
 ```
+
+## Про настройки VS Code
+
+`vscode/settings.json` и `vscode/keybindings.json` взяты целиком из
+[sobolevn/dotfiles](https://github.com/sobolevn/dotfiles/tree/master/vscode)
+(коммит `a0d77db`) — значения не менялись, добавлены только комментарии.
+
+Подход там радикальный: скрыты строка состояния, панель значков, «хлебные
+крошки» и миникарта, выключены автодополнение, автоскобки и подсказки при
+наведении. Если это слишком — правь `vscode/settings.json`, у каждой строки
+написано, за что она отвечает.
+
+Настройки ссылаются на конкретные расширения и шрифт, поэтому они едут
+вместе: тема `pustota`, иконки `ayu`, `custom-ui-style`, `errorlens`, Pylance
+(всё в [`vscode/extensions.txt`](vscode/extensions.txt)) и шрифт Fira Code
+из Brewfile. Без них редактор запустится, но будет выглядеть не так.
+
+Cursor — отдельная программа со своей папкой настроек, его конфиг в
+[`cursor/`](cursor) и остался твоим собственным.
 
 ## Чего здесь нет
 
@@ -132,6 +153,11 @@ cursor --list-extensions > ~/Desktop/dotfiles/cursor/extensions.txt
 - `~/.aws/`, `~/.docker/config.json` — учётные данные облаков и реестров
 
 Храни их в менеджере паролей или в приватном репозитории.
+
+Часть программ поставить через Homebrew нельзя — для них нет cask-а
+(корпоративные VPN, ActiveCollab, Yandex.Telemost и другие). Они перечислены
+отдельным блоком в конце [`macos/Brewfile`](macos/Brewfile), со ссылками, откуда
+качать.
 
 Так же не переносятся настройки, которые macOS хранит в бинарном виде и не
 отдаёт через `defaults`: состав иконок в Dock, обои, Night Shift, True Tone,

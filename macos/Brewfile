@@ -80,12 +80,18 @@ cask "obsidian"
 cask "orbstack"
 # Клиент OpenVPN
 cask "openvpn-connect"
+# Шрифт редактора: на него ссылается editor.fontFamily в vscode/settings.json
+cask "font-fira-code"
 # Клиент для работы с HTTP API
 cask "postman"
 # IDE для Python
 cask "pycharm"
 # Скриншоты с распознаванием текста и измерениями
 cask "shottr"
+# Редактор кода. Настройки и расширения — в vscode/
+cask "visual-studio-code"
+# Терминал-мультиплексор с вкладками
+cask "cmux"
 # Видеоконференции
 cask "zoom"
 
@@ -132,13 +138,30 @@ npm "corepack"
 # Утилита построения графа знаний по проекту
 uv "graphifyy"
 
+# ──────────────────── Ставится вручную, cask-а не существует ────────────────────
+#
+# Эти программы стоят на машине, но в Homebrew их нет — на новом Mac придётся
+# скачать с сайта. Список здесь, чтобы при переезде ничего не забыть.
+#
+#   ActiveCollab            — таск-трекер, https://activecollab.com/apps
+#   Active Collab Timer     — есть в App Store, см. секцию mas выше
+#   DeepSeek Harness        — https://deepseek.com
+#   Devin                   — https://devin.ai
+#   Endpoint Security VPN   — корпоративный VPN Check Point, даёт работодатель
+#   NetBird                 — https://netbird.io/downloads
+#   Sota Connect            — корпоративный клиент, даёт работодатель
+#   UniVPN                  — корпоративный VPN, даёт работодатель
+#   Yandex.Telemost         — https://telemost.yandex.ru
+#
+# Системные приложения Apple (Safari, Почта, Календарь) ставятся вместе с macOS.
+
+
 # ────────────────────────────── Опционально ──────────────────────────────
 #
 # Эти пакеты сейчас не установлены — раскомментируй, если понадобятся.
 
-# Моноширинные шрифты для редактора и терминала:
+# Ещё моноширинные шрифты для редактора и терминала:
 # cask "font-jetbrains-mono"
-# cask "font-fira-code"
 # cask "font-hack-nerd-font"
 
 # cat с подсветкой синтаксиса:

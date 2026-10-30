@@ -26,7 +26,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # 2. Репозиторий
-git clone <url-этого-репозитория> ~/Desktop/dotfiles
+git clone git@github.com:Peopl3s/dotfiles.git ~/Desktop/dotfiles
 
 # 3. Конфиги, пакеты, приложения
 bash ~/Desktop/dotfiles/install.sh

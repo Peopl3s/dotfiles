@@ -1,0 +1,50 @@
+// Настройки редактора Cursor.
+// Симлинк на этот файл ставит dotbot (см. steps/editors.yml).
+// Формат — JSONC: комментарии разрешены.
+{
+  // Строка поиска/команд по центру заголовка окна.
+  "window.commandCenter": true,
+
+  // Не подстраивать тему под системную — тема редактора задаётся вручную.
+  "window.autoDetectColorScheme": false,
+
+  // --- Kilo Code (ИИ-агент) --------------------------------------------------
+
+  // Команды, которые агент может выполнять без подтверждения.
+  // Сюда попадает только то, что ничего не ломает: чтение git и логов.
+  "kilo-code.allowedCommands": [
+    "git log",
+    "git diff",
+    "git show",
+    "docker compose -f my_awesome_api/docker-compose.yml -f my_awesome_api/docker-compose.override.yml logs --follow app",
+    "docker",
+    "docker compose"
+  ],
+
+  // Явный чёрный список команд (пустой — ничего дополнительно не запрещено).
+  "kilo-code.deniedCommands": [],
+
+  // Отладочные логи агента выключены.
+  "kilo-code.debug": false,
+
+  // Не показывать онбординг про режимы работы агента.
+  "kilo-code.new.agentWorkStyle": "skipped",
+
+  // Эти горячие клавиши перехватывает редактор, а не встроенный терминал.
+  "terminal.integrated.commandsToSkipShell": [
+    "kilo-code.new.agentManagerOpen",
+    "kilo-code.new.agentManager.showTerminal",
+    "kilo-code.new.agentManager.runScript",
+    "kilo-code.new.agentManager.previousTerminal",
+    "kilo-code.new.agentManager.nextTerminal"
+  ],
+
+  // --- Kubernetes ------------------------------------------------------------
+
+  // Пути до бинарников, скачанных расширением vscode-kubernetes-tools.
+  // ${userHome} вместо абсолютного пути — чтобы конфиг работал на любом Mac.
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path-mac": "${userHome}/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.minikube-path-mac": "${userHome}/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  }
+}

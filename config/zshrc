@@ -1,0 +1,28 @@
+# ~/.zshrc — выполняется при запуске каждой интерактивной оболочки.
+# Здесь живут алиасы, функции и всё, что нужно «вживую» в терминале.
+# Симлинк на этот файл ставит dotbot (см. steps/terminal.yml).
+
+# Подключаем модули из ~/.shell (симлинк на папку shell/ этого репозитория).
+# Разбито на файлы, чтобы не держать всё в одной куче.
+for module in exports aliases functions; do
+  [ -r "$HOME/.shell/.$module" ] && source "$HOME/.shell/.$module"
+done
+unset module
+
+# direnv — автоматически подхватывает .envrc при входе в папку проекта.
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+
+# pyenv shims — нужны именно в интерактивном шелле, чтобы работал `pyenv shell`.
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
+
+# Yandex Cloud CLI: добавляет yc в PATH.
+[ -f "$HOME/yandex-cloud/path.bash.inc" ] && source "$HOME/yandex-cloud/path.bash.inc"
+
+# Автодополнение для yc.
+[ -f "$HOME/yandex-cloud/completion.zsh.inc" ] && source "$HOME/yandex-cloud/completion.zsh.inc"
+
+# Включаем систему автодополнения zsh.
+autoload -Uz compinit && compinit -C
+
+# Автодополнение без учёта регистра: `cd desk` найдёт Desktop.
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'

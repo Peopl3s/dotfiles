@@ -1,0 +1,157 @@
+# Список всего, что ставится через Homebrew.
+#
+# Установить всё:            brew bundle --file=~/Desktop/dotfiles/macos/Brewfile
+# Проверить, чего не хватает: brew bundle check --file=~/Desktop/dotfiles/macos/Brewfile
+# Пересобрать файл по факту:  brew bundle dump --force --file=~/Desktop/dotfiles/macos/Brewfile
+#
+# ────────────────────────────── Консольные утилиты ──────────────────────────────
+
+# Официальный CLI для Amazon AWS
+brew "awscli"
+# C++-клиент для ClickHouse (тянется как зависимость cask clickhouse)
+brew "clickhouse-cpp"
+# Подхватывает переменные окружения из .envrc при входе в папку
+brew "direnv"
+# Конвертация и запись аудио/видео
+brew "ffmpeg"
+# CLI для GitLab — аналог gh, но для GitLab
+brew "glab"
+# Интерактивный монитор процессов (продвинутый top)
+brew "htop"
+# Запуск проектных команд из justfile — как make, только проще
+brew "just"
+# Консольный клиент MongoDB
+brew "mongosh"
+# traceroute и ping в одном окне, с живой статистикой
+brew "mtr"
+# Библиотека рендеринга PDF (pdftotext, pdfimages и т.д.)
+brew "poppler"
+# PostgreSQL 18. link: true — класть psql и прочее в PATH
+brew "postgresql@18", link: true
+# Переключение версий Python
+brew "pyenv"
+# Сборка версий Ruby (бэкенд для rbenv)
+brew "ruby-build"
+# Клиент протокола TELNET — удобно проверять, открыт ли порт
+brew "telnet"
+# Дерево каталогов в консоли
+brew "tree"
+# Быстрый менеджер пакетов и окружений Python (замена pip + venv)
+brew "uv"
+# Скачивание файлов по HTTP/FTP
+brew "wget"
+# Менеджер пакетов JavaScript
+brew "yarn"
+# Скачивание видео с YouTube и сотен других сайтов
+brew "yt-dlp"
+
+# Управление яркостью экрана из консоли — нужен для macos/defaults/06-display-energy.sh
+brew "brightness"
+# CLI для Mac App Store — нужен для секции `mas` ниже
+brew "mas"
+
+# ─────────────────────────────── Приложения (cask) ───────────────────────────────
+
+# VPN с обходом блокировок
+cask "amneziavpn"
+# Десктопный ChatGPT
+cask "chatgpt"
+# Десктопный Claude
+cask "claude"
+# Колоночная СУБД ClickHouse
+cask "clickhouse"
+# Редактор кода с ИИ (форк VS Code)
+cask "cursor"
+# Универсальный GUI-клиент к базам данных
+cask "dbeaver-community"
+# Форк Lens — GUI для Kubernetes
+cask "freelens"
+# Браузер по умолчанию на этом Mac
+cask "google-chrome"
+# Lens — GUI для Kubernetes
+cask "lens"
+# Мок-сервер для REST API
+cask "mockoon"
+# Запись экрана и трансляции
+cask "obs"
+# База знаний на локальных Markdown-файлах
+cask "obsidian"
+# Docker-окружение и Linux-машины, легче Docker Desktop
+cask "orbstack"
+# Клиент OpenVPN
+cask "openvpn-connect"
+# Клиент для работы с HTTP API
+cask "postman"
+# IDE для Python
+cask "pycharm"
+# Скриншоты с распознаванием текста и измерениями
+cask "shottr"
+# Видеоконференции
+cask "zoom"
+
+# ─────────────────────────── Приложения из Mac App Store ───────────────────────────
+#
+# Число — ID приложения в App Store. Нужен установленный `mas` и вход в Apple ID.
+
+# Таймер трекинга времени для ActiveCollab
+mas "Active Collab Timer", id: 1005615923
+# Архиватор
+mas "Cos Zip", id: 6499133085
+# VPN-клиент
+mas "Happ", id: 6746188973
+# Редактор фото
+mas "Photomator", id: 1444636541
+# Мессенджер
+mas "Telegram", id: 747648890
+# Подключение к Windows по RDP
+mas "Windows App", id: 1295203466
+# Клиент WireGuard
+mas "WireGuard", id: 1451685025
+# iWork и медиа от Apple
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+# Xcode — около 10 ГБ, ставится долго
+mas "Xcode", id: 497799835
+# VPN-клиент
+mas "v2RayTun", id: 6476628951
+
+# ────────────────────────── Глобальные пакеты npm и uv ──────────────────────────
+
+# CLI Google Gemini
+npm "@google/gemini-cli"
+# CLI мок-сервера Mockoon
+npm "@mockoon/cli"
+# Среда выполнения и пакетный менеджер Bun
+npm "bun"
+# Переключатель менеджеров пакетов Node (npm / yarn / pnpm)
+npm "corepack"
+
+# Утилита построения графа знаний по проекту
+uv "graphifyy"
+
+# ────────────────────────────── Опционально ──────────────────────────────
+#
+# Эти пакеты сейчас не установлены — раскомментируй, если понадобятся.
+
+# Моноширинные шрифты для редактора и терминала:
+# cask "font-jetbrains-mono"
+# cask "font-fira-code"
+# cask "font-hack-nerd-font"
+
+# cat с подсветкой синтаксиса:
+# brew "bat"
+# Быстрый поиск по содержимому файлов:
+# brew "ripgrep"
+# Интерактивный fuzzy-поиск:
+# brew "fzf"
+# Современная замена ls:
+# brew "eza"
+# Линтер shell-скриптов (им проверяется этот репозиторий):
+# brew "shellcheck"
+# CLI для GitHub:
+# brew "gh"
+# jq — обработка JSON в консоли:
+# brew "jq"

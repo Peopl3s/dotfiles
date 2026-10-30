@@ -1,0 +1,56 @@
+# ~/.gitconfig — глобальные настройки git.
+# Симлинк на этот файл ставит dotbot (см. steps/terminal.yml).
+#
+# Если будешь выкладывать репозиторий публично — замени имя и почту ниже
+# или вынеси их в ~/.gitconfig.local и подключи через [include].
+
+[user]
+	# Имя и почта, которые попадают в каждый коммит.
+	name = Мельников Максим
+	email = m.melnikov@idaproject.com
+
+[core]
+	# Глобальный .gitignore — правила, общие для всех репозиториев.
+	excludesFile = ~/.gitignore_global
+	# При коммите переводы строк приводятся к LF, в рабочей копии остаются как есть.
+	# Правильный режим для macOS/Linux.
+	autocrlf = input
+
+[init]
+	# Имя ветки в новых репозиториях.
+	defaultBranch = main
+
+[pull]
+	# `git pull` делает rebase вместо merge — история остаётся линейной,
+	# без мусорных «Merge branch…» коммитов.
+	rebase = true
+
+[fetch]
+	# Удалять локальные ссылки на ветки, которых уже нет на сервере.
+	prune = true
+
+[push]
+	# `git push` без аргументов отправляет текущую ветку в одноимённую удалённую.
+	default = current
+	# И сразу заводит upstream, чтобы не писать --set-upstream.
+	autoSetupRemote = true
+
+[diff]
+	# Более умный алгоритм диффа: меньше «съехавших» блоков в выводе.
+	algorithm = histogram
+
+[rerere]
+	# Запоминает, как ты разрешил конфликт, и повторяет это автоматически.
+	enabled = true
+
+[alias]
+	# Короткие команды: git st, git co и т.д.
+	st = status --short --branch
+	co = checkout
+	br = branch
+	# Однострочный лог с деревом веток.
+	lg = log --oneline --graph --decorate --all
+	# Что уже застейджено.
+	staged = diff --staged
+	# Отменить последний коммит, оставив изменения в рабочей копии.
+	undo = reset --soft HEAD~1

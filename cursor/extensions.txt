@@ -1,0 +1,22 @@
+# Расширения Cursor. По одному ID в строке, строки с # игнорируются.
+#
+# Установить всё:  bash ~/Desktop/dotfiles/cursor/install-extensions.sh
+# Обновить список: cursor --list-extensions > ~/Desktop/dotfiles/cursor/extensions.txt
+#
+# (Brewfile для этого не подходит: его директива `vscode` ставит расширения
+#  в VS Code через команду `code`, а у Cursor своя CLI — `cursor`.)
+
+# Claude Code внутри редактора
+anthropic.claude-code
+# Разработка внутри Docker-контейнеров
+anysphere.remote-containers
+# Разработка на удалённой машине по SSH
+anysphere.remote-ssh
+# ИИ-агент Kilo Code
+kilocode.kilo-code
+# Работа с кластерами Kubernetes: поды, логи, манифесты
+ms-kubernetes-tools.vscode-kubernetes-tools
+# Подсветка и валидация YAML по схемам
+redhat.vscode-yaml
+# Cline — ещё один ИИ-агент
+saoudrizwan.claude-dev

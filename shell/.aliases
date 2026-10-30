@@ -1,0 +1,62 @@
+# Короткие команды. Подключается из ~/.zshrc.
+
+# --- Навигация ---------------------------------------------------------------
+
+# Подняться на уровень вверх / на два / на три.
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Список файлов со всеми подробностями, включая скрытые, с человекочитаемым размером.
+alias ll='ls -lahF'
+# Только скрытые файлы.
+alias l.='ls -d .*'
+
+# --- Git ---------------------------------------------------------------------
+
+alias g='git'
+alias gs='git status --short --branch'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias ga='git add'
+alias gc='git commit'
+alias gco='git checkout'
+alias gp='git push'
+alias gl='git pull'
+# Лог в виде дерева.
+alias glog='git log --oneline --graph --decorate --all'
+
+# --- Docker / OrbStack -------------------------------------------------------
+
+alias d='docker'
+alias dc='docker compose'
+# Запущенные контейнеры в читаемой таблице.
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+# Логи сервиса из docker-compose с хвостом в реальном времени.
+alias dlogs='docker compose logs --follow --tail=100'
+
+# --- Kubernetes --------------------------------------------------------------
+
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get svc'
+# Текущий контекст — чтобы случайно не выкатить в прод.
+alias kctx='kubectl config current-context'
+
+# --- Python ------------------------------------------------------------------
+
+alias py='python3'
+# Создать и активировать окружение через uv.
+alias venv='uv venv && source .venv/bin/activate'
+alias activate='source .venv/bin/activate'
+
+# --- Система -----------------------------------------------------------------
+
+# Обновить Homebrew и все пакеты, затем подчистить старые версии.
+alias brewup='brew update && brew upgrade && brew cleanup'
+# Показать, что слушает порты.
+alias ports='lsof -nP -iTCP -sTCP:LISTEN'
+# Удалить все .DS_Store в текущем дереве.
+alias cleands='find . -name ".DS_Store" -type f -delete'
+# Перейти в папку dotfiles.
+alias dotfiles='cd ~/Desktop/dotfiles'

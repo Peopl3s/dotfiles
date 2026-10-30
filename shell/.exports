@@ -1,0 +1,33 @@
+# Переменные окружения. Подключается из ~/.zshrc.
+
+# Редактор по умолчанию для git, crontab и прочих утилит.
+export EDITOR='nano'
+export VISUAL="$EDITOR"
+
+# История команд: сколько держать в памяти и сколько писать в файл.
+export HISTSIZE=50000
+export SAVEHIST=50000
+export HISTFILE="$HOME/.zsh_history"
+
+# Не сохранять в историю дубликаты и команды, начинающиеся с пробела.
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+# Писать историю сразу, а не при выходе — чтобы не терять её между вкладками.
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# less: -R — показывать цвета, -F — не открывать пейджер для короткого вывода,
+# -X — не чистить экран после выхода.
+export LESS='-RFX'
+
+# Цветной вывод ls.
+export CLICOLOR=1
+
+# Homebrew: не запускать `brew update` при каждой установке — это долго.
+export HOMEBREW_NO_AUTO_UPDATE=1
+# Не слать аналитику в Homebrew.
+export HOMEBREW_NO_ANALYTICS=1
+
+# Python: не создавать .pyc-файлы и не буферизовать вывод (важно в docker-логах).
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONUNBUFFERED=1

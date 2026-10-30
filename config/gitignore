@@ -1,0 +1,26 @@
+# ~/.gitignore_global — правила, которые действуют во всех репозиториях сразу.
+# Подключается через core.excludesFile в config/gitconfig.
+
+# direnv: локальные переменные окружения проекта
+.direnv
+.envrc
+
+# Виртуальное окружение Python
+.venv
+
+# Служебные папки редакторов
+.idea
+.vscode
+
+# Локальные разрешения Claude Code — у каждого свои
+**/.claude/settings.local.json
+
+# Мусор macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Логи и временные файлы
+*.log
+*.swp

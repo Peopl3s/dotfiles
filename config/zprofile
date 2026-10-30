@@ -1,0 +1,25 @@
+# ~/.zprofile — выполняется один раз при входе в систему (login shell).
+# Здесь живёт всё, что настраивает PATH и окружение.
+# Симлинк на этот файл ставит dotbot (см. steps/terminal.yml).
+
+# Homebrew: добавляет /opt/homebrew/bin в PATH и задаёт HOMEBREW_* переменные.
+# На Apple Silicon brew лежит в /opt/homebrew, на Intel — в /usr/local.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# OrbStack: docker, docker-compose и доступ к Linux-машинам.
+# `|| :` — чтобы шелл не падал, если OrbStack ещё не установлен.
+source "$HOME/.orbstack/shell/init.zsh" 2>/dev/null || :
+
+# nvm — переключение версий Node.js.
+export NVM_DIR="$HOME/.nvm"
+# Сам nvm (подключается только если установлен).
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# Автодополнение команд nvm.
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# pyenv — переключение версий Python.
+# `--path` правит только PATH; это быстро и достаточно для login-шелла.
+command -v pyenv >/dev/null && eval "$(pyenv init --path)"
+
+# ~/.local/bin — сюда ставят бинарники uv, pipx и pip --user.
+export PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,9 @@
+// Переопределения горячих клавиш Cursor.
+// Симлинк на этот файл ставит dotbot (см. steps/editors.yml).
+[
+  {
+    // ⌘ + I открывает Composer сразу в режиме агента, а не в режиме чата.
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  }
+]

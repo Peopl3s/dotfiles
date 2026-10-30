@@ -1,0 +1,26 @@
+# Мусор macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Icon
+
+# Резервные копии, которые делает install.sh перед заменой файлов
+backup/
+
+# Секреты — в репозиторий не попадают никогда.
+# На машине они лежат в ~/.netrc, ~/.npmrc, ~/.env, ~/.ssh, ~/.kube/config
+# и хранятся отдельно (менеджер паролей, приватный репозиторий).
+.env
+.netrc
+.npmrc
+*.pem
+*.key
+*.crt
+id_rsa*
+id_ed25519*
+kubeconfig*
+
+# Редакторы
+.idea/
+.vscode/
